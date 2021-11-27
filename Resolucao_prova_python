@@ -1,0 +1,90 @@
+########################################################################################################################
+def percorrer_palavra():
+    # Opção 1: Percorrer Palavra-
+    # Este exercício consiste em digitarmos uma palavra em letras maiúsculas.
+    # O programa percorrerá a palavra informando em qual posição do alfabeto encontra-se cada uma das
+    # letras da palavra digitada.
+    palavra = (input('Informe uma palavra: '))
+    a = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+         'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+    pos = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6]
+    posicao = 0
+
+    for alfabeto in a:
+        print(alfabeto, end='')
+
+    print('\n')
+
+    for conta in pos:
+        print(conta, end='')
+
+    print('\n')
+
+    for p in range(0, len(palavra)):
+        print(f'Letra da palavra: {palavra.upper()[p]} - posição: {p + 1}')
+        for pos_a in range(0, len(a)):
+            if palavra.upper()[p] == a[pos_a]:
+                print(f'Letra Alfabeto na posição: {pos_a + 1}')
+        print('-' * 35)
+
+
+########################################################################################################################
+def jogo_quina(dado):
+    import random
+
+    # Opção 2: Jogo da Quina -
+    # Este exercício tem sua funcionalidade baseada em sorteio de números aleatórios.
+    # Função usada em diversos programas que desenvolvemos durante o semestre.
+    # O programa deverá sortear primeiramente 5 números que serão atribuídos ao apostador em seguida
+    # o programa sorteia outros 5 números atribuídos ao resultado do concurso.
+    # O programa deverá mostrar quais foram os números apostados e os números sorteados informando
+    # quantos números o apostador acertou.
+
+    # Variavel a, de números apostados
+    # Varial ap, da posição dos números sorteados
+    # Variavel r, de números resultados
+    # Varial rap, da posição dos números resultados
+    a = (random.randint(1, 60), random.randint(1, 60), random.randint(1, 60),
+         random.randint(1, 60), random.randint(1, 60))
+    r = (random.randint(1, 60), random.randint(1, 60), random.randint(1, 60),
+         random.randint(1, 60), random.randint(1, 60))
+    acerto = 0
+
+    print('Apostados: ', end='')
+    for ap in a:
+        print(f'{ap}', end=' ')
+    print('\nResultado: ', end='')
+    for rap in r:
+        print(f'{rap}', end=' ')
+    print('\n')
+    for comp_ap in a:
+        print(f'Número apostado: {comp_ap}')
+        for comp_rap in r:
+            if comp_ap == comp_rap:
+                acerto += 1
+                print(f'Acertou!!!{comp_ap} - {comp_rap}')
+    if acerto > 0:
+        print(f'Você teve {acerto} de acertos!')
+    
+
+print('*' * 29)
+print('Avaliação Algoritimo e Lógica')
+print('*' * 29)
+print('Selecione uma opção ')
+menu = ('1. Percorrer Palavra', '2. Jogo da Quina', '9. Finalizar o programa')
+print('\n')
+for l in menu:
+    print(l)
+
+opcao = int(input())
+loop = 1
+while loop == 1:
+    if opcao == 1:
+        percorrer_palavra()
+    elif opcao == 2:
+        jogo_quina(opcao)
+    elif opcao == 9:
+        loop = 0
+    else:
+        print('Opção inválida, escolha outra!')
+print('Programa Finalizado!')
